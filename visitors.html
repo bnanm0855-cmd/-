@@ -38,6 +38,66 @@
  .filter-chips{display:flex}
 }
 
+
+/* Mobile-first layout polish: compact header, readable sections and safe bottom navigation */
+@media (max-width:760px){
+  .topbar{
+    height:auto; min-height:108px; padding:9px 12px 10px;
+    grid-template-columns:minmax(0,1fr) auto;
+    grid-template-rows:42px 42px; gap:7px 10px;
+  }
+  .brand{grid-column:2;grid-row:1;justify-self:end}
+  .top-actions{grid-column:1;grid-row:1;justify-content:flex-start}
+  .search{grid-column:1 / -1;grid-row:2;max-width:none;width:100%;height:40px}
+  .layout{padding:12px 10px calc(28px + env(safe-area-inset-bottom))}
+  .hero{min-height:205px;padding:22px 16px}
+  .hero-copy{max-width:72%;z-index:2}
+  .hero h1{font-size:clamp(24px,6.8vw,34px);line-height:1.3}
+  .hero p{max-width:34ch;font-size:10px}
+  .hero-art{inset:0 56% 0 0;opacity:.72}
+  .hero-controller{font-size:clamp(70px,19vw,112px)}
+  .welcome-strip{gap:10px}
+  .section-head{align-items:center;gap:8px}
+  .section-head h2{font-size:17px}
+  .filter-chips{flex-wrap:wrap;overflow:visible;gap:7px;padding:2px 0 12px}
+  .chip{flex:1 0 auto;text-align:center;padding:8px 10px;min-width:64px}
+  .game-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}
+  .game-card{min-width:0}
+  .game-cover{height:clamp(88px,25vw,125px)}
+  .share-banner{margin-bottom:10px}
+  .mobile-dock{height:calc(68px + env(safe-area-inset-bottom));padding:6px 5px calc(6px + env(safe-area-inset-bottom))}
+  body{padding-bottom:calc(82px + env(safe-area-inset-bottom))}
+}
+@media (max-width:430px){
+  .topbar{min-height:104px;padding-inline:10px}
+  .brand-mark{width:36px;height:36px;font-size:19px}
+  .brand b{font-size:14px}
+  .brand small{font-size:7px}
+  .round-btn{width:35px;height:35px}
+  .layout{padding-inline:8px}
+  .hero{min-height:190px;padding:18px 13px}
+  .hero-copy{max-width:76%}
+  .hero h1{font-size:25px}
+  .hero p{font-size:9px}
+  .hero .primary-btn{min-height:36px;padding-inline:14px}
+  .hero-art{inset-inline-start:0;opacity:.48}
+  .section-head h2{font-size:16px}
+  .chip{font-size:9px;min-width:58px;padding:7px 8px}
+  .game-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .game-cover{height:92px}
+  .game-info h3{font-size:10px}
+  .game-actions button{font-size:8px}
+  .empty-state{min-height:175px}
+  .share-banner{padding:11px;gap:7px}
+  .share-copy b{font-size:11px}
+}
+@media (max-width:340px){
+  .game-grid{grid-template-columns:1fr}
+  .hero-copy{max-width:100%}
+  .hero-art{opacity:.22}
+  .filter-chips .chip{min-width:calc(33.33% - 8px)}
+}
+
 </style>
 </head>
 <body>
