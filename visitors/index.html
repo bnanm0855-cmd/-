@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#09051d"><meta name="description" content="مملكة الجيمر — العب، استمتع، واكتشف ألعاباً جديدة.">
+<title>مملكة الجيمر | العب، استمتع، اكتشف</title>
+<link rel="manifest" href="manifest.webmanifest"><link rel="icon" href="icon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="topbar">
+ <a class="brand" href="#home" aria-label="مملكة الجيمر"><span class="brand-mark">🎮</span><span><b>مملكة الجيمر</b><small>العب · استمتع · اكتشف</small></span></a>
+ <form class="search" id="searchForm" role="search"><span>⌕</span><input id="searchInput" type="search" placeholder="ابحث في الألعاب..." autocomplete="off"><button aria-label="بحث">بحث</button></form>
+ <div class="top-actions"><button class="round-btn" id="themeBtn" aria-label="تبديل المظهر">☾</button><button class="round-btn" id="menuBtn" aria-label="فتح القائمة">☰</button></div>
+</header>
+<div class="layout" id="home">
+ <aside class="sidebar" id="sidebar">
+  <div class="side-caption">القائمة</div>
+  <nav class="side-nav">
+   <a class="nav-link active" href="#home" data-view="home"><span>⌂</span> الرئيسية</a>
+   <a class="nav-link" href="#games" data-view="games"><span>▦</span> كل الألعاب</a>
+   <a class="nav-link" href="#new" data-view="new"><span>✦</span> ألعاب جديدة</a>
+   <a class="nav-link" href="#popular" data-view="popular"><span>♨</span> الأكثر لعباً</a>
+  </nav>
+  <div class="side-caption category-caption">تصنيفات الألعاب</div>
+  <nav class="category-nav" id="categoryNav">
+   <button class="category-link active" data-category="الكل"><span>✧</span> الكل</button>
+   <button class="category-link" data-category="ألغاز"><span>🧩</span> ألغاز</button>
+   <button class="category-link" data-category="أكشن"><span>⚔️</span> أكشن</button>
+   <button class="category-link" data-category="مغامرات"><span>🧭</span> مغامرات</button>
+   <button class="category-link" data-category="سباق"><span>🏁</span> سباق</button>
+   <button class="category-link" data-category="ذكاء"><span>🧠</span> ذكاء</button>
+   <button class="category-link" data-category="رياضة"><span>🏆</span> رياضة</button>
+   <button class="category-link" data-category="استراتيجية"><span>♜</span> استراتيجية</button>
+  </nav>
+  <div class="sidebar-note"><span>🚀</span><b>عندك لعبة مميزة؟</b><small>شاركها مع مجتمع مملكة الجيمر.</small><button class="text-btn" data-open="upload">ارفع لعبتك ←</button></div>
+ </aside>
+ <main class="main">
+  <section class="hero" aria-label="ترحيب">
+   <div class="hero-orbit orbit-one"></div><div class="hero-orbit orbit-two"></div><div class="hero-art"><span class="hero-controller">🎮</span><span class="spark s1">✦</span><span class="spark s2">✧</span><span class="spark s3">◈</span></div>
+   <div class="hero-copy"><span class="eyebrow">مرحباً بك في عالم الألعاب</span><h1>مغامرتك القادمة<br><em>تبدأ من هنا!</em></h1><p>اكتشف ألعاباً ممتعة، جرّبها مباشرة، وشارك ألعابك مع الجميع.</p><a class="primary-btn" href="#games">ابدأ اللعب الآن <span>◁</span></a><div class="hero-dots"><i></i><i></i><i></i><i></i></div></div>
+  </section>
+  <section class="welcome-strip"><div><b>جاهز للتحدي؟</b><span>اختر لعبتك المفضلة وانطلق في المغامرة.</span></div><span class="strip-icon">👑</span></section>
+  <section class="section-block" id="games">
+   <div class="section-head"><div><span class="section-kicker">اكتشف عالمك</span><h2 id="sectionTitle">ألعاب مميزة</h2></div><span class="result-count" id="resultCount">لا توجد ألعاب منشورة بعد</span></div>
+   <div class="filter-chips" id="mobileCategories">
+    <button class="chip active" data-category="الكل">الكل</button><button class="chip" data-category="ألغاز">ألغاز</button><button class="chip" data-category="أكشن">أكشن</button><button class="chip" data-category="مغامرات">مغامرات</button><button class="chip" data-category="سباق">سباق</button><button class="chip" data-category="ذكاء">ذكاء</button><button class="chip" data-category="رياضة">رياضة</button><button class="chip" data-category="استراتيجية">استراتيجية</button>
+   </div>
+   <div class="game-grid" id="gameGrid"><div class="empty-state"><span>🕹️</span><b>الألعاب قادمة قريباً</b><p>لم تتم إضافة ألعاب إلى المنصة بعد. كن أول من يشارك لعبته!</p><button class="primary-btn" data-open="upload">ارفع أول لعبة</button></div></div>
+  </section>
+  <section class="share-banner"><div class="share-emoji">🕹️</div><div class="share-copy"><b>ليس لديك لعبتك الخاصة؟</b><span>اقترح تعديلاً على لعبة موجودة وساعدنا على تحسينها.</span></div><button class="outline-btn" data-open="suggest">اقترح تعديل لعبة <span>⚒</span></button></section>
+  <footer><span>© <span id="year"></span> مملكة الجيمر</span><span>صُنعت بشغف لعشاق الألعاب 💜</span></footer>
+ </main>
+</div>
+<div class="mobile-dock"><a class="dock-active" href="#home"><span>⌂</span>الرئيسية</a><a href="#games"><span>▦</span>الألعاب</a><button data-open="upload"><span>＋</span>رفع لعبة</button><button data-open="suggest"><span>⚒</span>اقتراح تعديل</button></div>
+<div class="modal-backdrop" id="modal" aria-hidden="true"><section class="modal-card" role="dialog" aria-modal="true" aria-labelledby="modalTitle"><button class="modal-close" id="closeModal" aria-label="إغلاق">×</button><div id="modalContent"></div></section></div>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+<script src="app.js"></script>
+</body></html>
