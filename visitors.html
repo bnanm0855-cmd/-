@@ -374,6 +374,32 @@ html,body{width:100%;max-width:100%;overflow-x:hidden}
  .modal-backdrop{align-items:center}
 }
 
+
+/* Navigation cleanup: compact spacing and visually group contribution actions */
+.sidebar{padding:16px 12px}
+.side-nav{gap:5px}
+.nav-link,.category-link{min-height:42px;height:auto;padding:9px 12px;gap:11px;line-height:1.45}
+.nav-link .nav-icon{width:22px;height:22px;flex:0 0 22px;display:grid;place-items:center}
+.nav-link .nav-icon svg{width:19px;height:19px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.nav-link:not(.active) .nav-icon{color:#b99aff}
+.nav-link.active .nav-icon{color:#fff}
+.side-nav [data-open="upload"]{margin-top:5px}
+.side-nav [data-open="suggest"]{margin-top:0}
+.side-nav [data-open="upload"]::before{content:"";position:absolute}
+.sidebar-note{margin-top:17px;padding:13px 12px;gap:6px}
+.sidebar-note>span{font-size:22px}
+.sidebar-note b{font-size:12px;line-height:1.6}
+.sidebar-note small{line-height:1.8}
+@media(min-width:761px){
+ .sidebar{max-height:calc(100dvh - 112px);overflow-y:auto}
+}
+@media(max-width:760px){
+ .sidebar{gap:0;padding:14px 11px}
+ .side-nav{gap:4px}
+ .nav-link,.category-link{min-height:43px;padding:9px 11px;font-size:12px}
+ .sidebar-note{margin-top:13px}
+}
+
 </style>
 </head>
 <body>
@@ -390,7 +416,9 @@ html,body{width:100%;max-width:100%;overflow-x:hidden}
    <a class="nav-link" href="#games" data-view="games"><span class="nav-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="8" height="8" rx="2"/><rect x="13" y="3" width="8" height="8" rx="2"/><rect x="3" y="13" width="8" height="8" rx="2"/><rect x="13" y="13" width="8" height="8" rx="2"/></svg></span> كل الألعاب</a>
    <a class="nav-link" href="#new" data-view="new"><span class="nav-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m12 2 2.2 6.8L21 11l-6.8 2.2L12 20l-2.2-6.8L3 11l6.8-2.2z"/><path d="m19 14 1.1 2.9L23 18l-2.9 1.1L19 22l-1.1-2.9L15 18l2.9-1.1z"/></svg></span> ألعاب جديدة</a>
    <a class="nav-link" href="#popular" data-view="popular"><span class="nav-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 21c-3-2-3-5 0-8s3-5 1-8"/><path d="M14 21c-3-2-3-5 0-8s3-5 1-8"/><path d="M19 21c-2-2-2-4 0-6"/></svg></span> الأكثر لعباً</a>
-     <button class="nav-link" type="button" data-open="upload"><span class="nav-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 16V4m-5 5 5-5 5 5"/><path d="M4 15v4a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-4"/></svg></span> رفع لعبة جديدة</button>\n   <button class="nav-link" type="button" data-open="suggest"><span class="nav-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m14 6 4 4M4 20l4-.8L19 8a2.8 2.8 0 0 0-4-4L4 15z"/></svg></span> تعديل لعبة موجودة</button>\n</nav>
+     <button class="nav-link" type="button" data-open="upload"><span class="nav-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 16V4m-5 5 5-5 5 5"/><path d="M4 15v4a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-4"/></svg></span> رفع لعبة جديدة</button>
+   <button class="nav-link" type="button" data-open="suggest"><span class="nav-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m14 6 4 4M4 20l4-.8L19 8a2.8 2.8 0 0 0-4-4L4 15z"/></svg></span> تعديل لعبة موجودة</button>
+</nav>
   <div class="sidebar-note"><span>🚀</span><b>عندك لعبة مميزة؟</b><small>شاركها مع مجتمع مملكة الجيمر.</small><button class="text-btn" data-open="upload">ارفع لعبتك ←</button></div>
  </aside>
  <main class="main">
