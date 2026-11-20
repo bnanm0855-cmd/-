@@ -540,4 +540,17 @@ function openForm(kind){
 </script>
 
 
+<script>
+/* Visitor session duration telemetry. Shared with the admin page on the same origin. */
+(function(){
+ const KEY='mkg_visitor_sessions',sidKey='mkg_visitor_session_id';
+ let sid=sessionStorage.getItem(sidKey);if(!sid){sid=(crypto.randomUUID?crypto.randomUUID():String(Date.now())+Math.random().toString(16).slice(2));sessionStorage.setItem(sidKey,sid)}
+ const now=()=>Date.now();let last=now();
+ function read(){try{return JSON.parse(localStorage.getItem(KEY)||'[]')}catch(e){return[]}}
+ function write(){try{const rows=read(),i=rows.findIndex(x=>x.id===sid),t=now();if(i<0)rows.push({id:sid,startedAt:t,lastSeen:t,seconds:0});else{rows[i].lastSeen=t;rows[i].seconds=(rows[i].seconds||0)+Math.max(0,Math.round((t-last)/1000));}last=t;localStorage.setItem(KEY,JSON.stringify(rows.slice(-500)))}catch(e){}}
+ write();const timer=setInterval(()=>{if(document.visibilityState==='visible')write()},15000);
+ document.addEventListener('visibilitychange',()=>{if(document.visibilityState==='visible'){last=now();write()}else write()});
+ window.addEventListener('pagehide',()=>{write();clearInterval(timer)});
+})();
+</script>
 </body></html>
