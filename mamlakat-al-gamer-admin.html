@@ -123,8 +123,18 @@ $('#addCategoryBtn').onclick=()=>{const c=prompt('اسم التصنيف');if(!c?
 $('#saveSettings').onclick=()=>{save();toast('تم حفظ الإعدادات')};$('#logoFile').onchange=e=>{const f=e.target.files[0];if(!f)return;if(f.size>2*1024*1024)return toast('اختر شعاراً أصغر من 2MB');const r=new FileReader();r.onload=()=>{db.logo=r.result;save();render();toast('تم حفظ شعار القناة')};r.readAsDataURL(f)};
 $('#globalSearch').onkeydown=e=>{if(e.key!=='Enter')return;const q=e.target.value.trim().toLowerCase();if(!q)return;const b=$$('.nav button').find(x=>x.textContent.toLowerCase().includes(q));if(b)b.click();else toast('لم يتم العثور على قسم مطابق')};
 function formatDuration(sec){sec=Math.max(0,Math.floor(sec||0));const h=Math.floor(sec/3600),m=Math.floor((sec%3600)/60),s=sec%60;return h? h+'س '+m+'د':m?m+'د '+s+'ث':s+'ث'}
-function renderSessions(){let rows=[];try{rows=JSON.parse(localStorage.getItem('mkg_visitor_sessions')||'[]')}catch(e){}const now=Date.now(),active=rows.filter(x=>now-(x.lastSeen||0)<90000),durations=rows.map(x=>x.seconds||0),avg=durations.length?durations.reduce((s,n)=>s+n,0)/durations.length:0,longest=durations.length?Math.max(...durations):0;const put=(id,val)=>{const el=document.getElementById(id);if(el)el.textContent=val};put('sessionTotal',rows.length);put('sessionActive',active.length);put('sessionAverage',durations.length?formatDuration(avg):'—');put('sessionLongest',durations.length?formatDuration(longest):'—');put('sessionTotalTime',durations.length?formatDuration(durations.reduce((s,n)=>s+n,0)):'—');const body=document.getElementById('sessionTable');if(body)body.innerHTML=rows.length?rows.slice().sort((x,y)=>(y.lastSeen||0)-(x.lastSeen||0)).slice(0,30).map((x,i)=>'<tr><td>زائر '+(i+1)+'</td><td>'+new Date(x.startedAt||x.lastSeen||now).toLocaleString('ar')+'</td><td>'+formatDuration(x.seconds)+'</td><td><span class="status" style="'+(now-(x.lastSeen||0)<90000?'':'color:#aaa;background:#29213f;border-color:#51466d')+'">'+(now-(x.lastSeen||0)<90000?'نشط':'غادر')+'</span></td></tr>').join(''):'<tr><td colspan="4" class="empty">لا توجد زيارات مسجلة في هذا المتصفح بعد.</td></tr>'}
-window.addEventListener('storage',e=>{if(e.key==='mkg_visitor_sessions')renderSessions()});
-render();renderSessions();setInterval(renderSessions,15000);
+function renderSessions(){
+  const put=(id,val)=>{const el=document.getElementById(id);if(el)el.textContent=val};
+  put('sessionSource','لا توجد بيانات زوار حتى الآن');
+  put('sessionTotal','—');
+  put('sessionActive','—');
+  put('sessionAverage','—');
+  put('sessionLongest','—');
+  put('sessionTotalTime','—');
+  const body=document.getElementById('sessionTable');
+  if(body)body.innerHTML='<tr><td colspan="4" class="empty">لا توجد بيانات زيارات بعد.</td></tr>';
+}
+render();
+renderSessions();
 </script>
 </body></html>
